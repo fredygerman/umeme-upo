@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Umeme Upo
 
-## Getting Started
+A Next Js app that shows you the current power status of your area.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [🚧] Theme Switcher
+- [🚧] Shows you the current power status of your area.
+- [🚧] Change Area to view power status.
+- [ 🔜] Shows the next power status update time.
+- [ 🔜] Shows the last power status update time.
+- [ 🔜] Funny / Not so Funny Quotes
+- [ 🔜] Share power status on social media
+- [ 🔜] Share Quotes on social media.
+- [ 🔜] Shows the current time.
+- [ 🔜] Check Status Button
+- [ 🔜] Realtime Power Status Update
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Later On:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [ ] Push Notifications
+- [ ] SMS Notifications
+- [ ] Email Notifications
+- [ ] WhatsAPP Notifications / Bot
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Screenshots
 
-## Learn More
+![Umeme Upo Dark](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/umeme-dark.png?raw=true)
 
-To learn more about Next.js, take a look at the following resources:
+![Umeme Upo Light](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/umeme-light.png?raw=true)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+(From the Figma File)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Supported Areas
 
-## Deploy on Vercel
+- [✅] Makumbusho
+  Currently only supports Makumbusho area. More areas will be added soon.
+  If you want to add your area, please open an issue. or contact me on [@fredygerman\_](https://twitter.com/fredygerman_)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design (UI/UX)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The Amazing design as seen on the screensshots has been done by [@faustin_henry](https://twitter.com/faustin_henry).
+
+You can help improve it by visiting the [Figma File](https://www.figma.com/file/it33dzvxrxfhFDlnGX3h53/Umeme-Upo%3F?type=design&node-id=0%3A1&mode=design&t=6qOce4RvCVWTaUnq-1) and requesting access.
+
+## How it works
+
+Umeme Upo calls my directus Instance API to get the latest power status update from the database.
+
+My directus instance is running on a self hosted server. It has a cron job (Directus Flow) that runs every 5 minutes to update the power status in the database.
+
+The Directus Flow pings my Home Assistant instance Ip address to check if it is online. If it is online it updates the database. If it is offline, marks the power status as maybe offline and checks again in 10 minutes. (this is to avoid false positives which can happen when the internet is down, but power is still on, or when my server is down due to updates or maintenance)
+
+## Tech Stack
+
+- Next Js
+- Typescript
+- Tailwind CSS
+- Directus (my headless CMS)
+- Home Assistant (my Smart Home server)
+- Vercel (Hosting)
+
+IF you need help setting up everything with your own instance of Directus, Home Assistant or Vercel, please open an issue or contact me on [@fredygerman\_](https://twitter.com/fredygerman_)
+
+## Contributing
+
+If you want to contribute to this project, please open an issue.
+Areas that need help:
+
+- [ ] Design (UI/UX improvements)
+- [ ] Suggestions (new features)
+- [ ] Support for more areas (currently only supports Makumbusho, i need ip addresses to ping for other areas)
