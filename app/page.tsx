@@ -5,7 +5,8 @@ import { Language } from '@/types/general';
 import { useSearchParams } from 'next/navigation';
 
 export default function Home(searchParams: {
-  [key: string]: string | string[] | undefined;
+  // [key: string]: string | string[] | undefined | null | any;
+  searchParams: any;
 }) {
   const language = (searchParams?.searchParams as any)?.language || 'en';
   const location =
