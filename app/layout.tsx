@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { AppHeader } from '@/components/layout/AppHeader';
 import { useParams } from 'next/navigation';
 import { Language } from '@/types/general';
+import QueryProvider from '@/components/query-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
@@ -30,8 +31,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className='custom-background min-h-screen '>
-            <AppHeader />
-            {children}
+            <QueryProvider>
+              <AppHeader />
+              {children}
+            </QueryProvider>
           </div>
         </ThemeProvider>
       </body>
