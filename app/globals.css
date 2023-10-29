@@ -1,76 +1,149 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 30, 60%, 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
- 
+
+    --power-off: 0 0% 58%; /* #949494 */
+    --power-on: 45, 100%, 51%; /* #FFC107 */
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
- 
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
- 
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
- 
+
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
- 
+
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
- 
+
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
- 
+
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
- 
+
+    --power-off: 0 0% 58%; /* #949494 */
+    --power-on: 45, 100%, 51%; /* #FFC107 */
+
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
- 
+
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
- 
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
- 
+
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
- 
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .custom-background {
+    background: none; /* Remove default background color */
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .custom-background::before,
+  .custom-background::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-clip: content-box; /* Clip the gradient to the content box */
+  }
+
+  .custom-background::before {
+    background: radial-gradient(
+      circle,
+      rgba(50, 98, 151, 10) -110.82%,
+      rgba(154, 150, 114, -34) 59%
+    );
+    padding-top: 100%; /* Maintain a 1:1 aspect ratio for the circle */
+
+    width: 100%;
+    height: 100%;
+
+    bottom: -40%;
+
+    right: 40%;
+  }
+
+  .custom-background::after {
+    background: radial-gradient(
+      circle,
+      rgba(125, 97, 255, 0.16),
+      rgba(50, 90, 151, 0) 67%
+    );
+    width: 100%;
+    height: 100%;
+
+    padding-top: 100%; /* Maintain a 1:1 aspect ratio for the circle */
+
+    top: 10%;
+
+    right: -40%;
+  }
+
+  /* mobile  */
+  @media (max-width: 640px) {
+    .custom-background::before {
+      bottom: 0%;
+      top: -40%;
+      right: 0%;
+    }
+
+    .custom-background::before,
+    .custom-background::after {
+      border-radius: 0%;
+      background-clip: none; /* Clip the gradient to the content box */
+    }
+
+    .custom-background::after {
+      bottom: 0%;
+      top: 40%;
+      right: 0%;
+    }
   }
 }
