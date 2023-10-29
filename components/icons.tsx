@@ -34,7 +34,7 @@ export const Icons = {
       viewBox='0 0 24 24'
       fill='none'
       stroke='currentColor'
-      stroke-width='2'
+      strokeWidth='2'
       stroke-linecap='round'
       stroke-linejoin='round'
       {...props}
@@ -68,7 +68,7 @@ export const Icons = {
           cy='72'
           r='70'
           stroke={props.status === 'on' ? '#FFC107' : '#949494'}
-          stroke-width='4'
+          strokeWidth='4'
         />
       </g>
       <defs>
