@@ -3,6 +3,8 @@ import { Inter, Roboto } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AppHeader } from '@/components/layout/AppHeader';
+import { useParams } from 'next/navigation';
+import { Language } from '@/types/general';
 
 const inter = Inter({ subsets: ['latin'] });
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Language, Location, Status } from '@/types/general';
 import { Icons } from '@/components/icons';
+import { useSearchParams } from 'next/navigation';
 
 export type Quote = {
   location: Location;
@@ -21,7 +22,11 @@ export default function SocialShare({
   paramLocation: Location;
   language: Language;
 }) {
-  const [status, setStatus] = useState<Status>('on');
+  const searchParams = useSearchParams();
+  const [status, setStatus] = useState<Status>(
+    (searchParams.get('status') as Status) || 'unknown'
+  );
+  // console.log('status', status);
 
   const quotes: Quotes = [
     {
@@ -41,6 +46,14 @@ export default function SocialShare({
       },
     },
     {
+      location: 'makumbusho',
+      status: 'unknown',
+      message: {
+        en: 'Power status is unknown at Makumbusho',
+        sw: 'Hali ya umeme haifahamiki Makumbusho',
+      },
+    },
+    {
       location: 'others',
       status: 'on',
       message: {
@@ -56,7 +69,28 @@ export default function SocialShare({
         sw: 'Hakuna umeme Others',
       },
     },
+    {
+      location: 'others',
+      status: 'unknown',
+      message: {
+        en: 'Power status is unknown at Others',
+        sw: 'Hali ya umeme haifahamiki Others',
+      },
+    },
   ];
+
+  useEffect(() => {
+    // get the status from the url
+    const status = (searchParams.get('status') as Status) || 'unknown';
+    // set the status
+    setStatus(status);
+    // set the quote
+    setQuote(
+      quotes.find(
+        (quote) => quote.location === paramLocation && quote.status === status
+      ) as Quote
+    );
+  }, [searchParams]);
 
   const [quote, setQuote] = useState<Quote>(
     quotes.find(
@@ -66,9 +100,11 @@ export default function SocialShare({
 
   return (
     <div className='flex flex-col items-center justify-center'>
-      <h4 className='mb-8 text-center text-2xl font-bold'>
-        "{(quote.message as any)[language]}"
-      </h4>
+      {status !== 'unknown' && (
+        <h4 className='mb-8 text-center text-2xl font-bold'>
+          "{(quote.message as any)[language]}"
+        </h4>
+      )}
       <div className='flex flex-row items-center justify-center '>
         <Icons.twitter className='mb-4 mr-4 h-4 w-4 ' />
         <span className='mb-4 mr-4 h-5 w-4'>Twitter</span>
