@@ -12,6 +12,9 @@
   "aliases": {
     "utils": "@/lib/utils",
     "components": "@/components",
+    "layouts": "@/components/layouts",
+    "config": "@/config",
+    "actions": "@/actions",
     "types": "@/types",
     "hooks": "@/hooks",
     "helpers": "@/helpers"
