@@ -53,6 +53,10 @@ module.exports = {
         backgroundImage: {
           'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         },
+        power: {
+          on: 'hsl(var(--power-on))',
+          off: 'hsl(var(--power-off))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

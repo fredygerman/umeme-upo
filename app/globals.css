@@ -13,6 +13,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
+    --power-off: 0 0% 58%; /* #949494 */
+    --power-on: 45, 100%, 51%; /* #FFC107 */
+
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
@@ -44,6 +47,9 @@
 
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
+
+    --power-off: 0 0% 58%; /* #949494 */
+    --power-on: 45, 100%, 51%; /* #FFC107 */
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
