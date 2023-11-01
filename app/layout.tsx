@@ -11,10 +11,9 @@ const inter = Inter({ subsets: ['latin'] });
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
-  title: 'Umeme Upo',
-  description:
-    'A website that shows you the current power status of areas in Dar es Salaam Tanzania. Website ya kuonyesha hali ya umeme katika maeneo ya Dar es Salaam Tanzania.',
-};
+  title: 'Umeme upo | Homepage',
+  description: 'A web application to show power status of various locations in Dar es salaam',
+}
 
 export default function RootLayout({
   children,
