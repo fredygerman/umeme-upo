@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "release": "generate-release"
+    "lint": "next lint"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -33,7 +32,6 @@
     "eslint": "^7.16.0",
     "eslint-config-next": "14.0.0",
     "eslint-config-prettier": "^9.0.0",
-    "generate-release": "^1.1.1",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
