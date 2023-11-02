@@ -12,8 +12,9 @@ const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: 'Umeme upo | Homepage',
-  description: 'A web application to show power status of various locations in Dar es salaam',
-}
+  description:
+    'A web application to show power status of various locations in Dar es salaam',
+};
 
 export default function RootLayout({
   children,
@@ -22,6 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <script
+        async
+        src='https://analytics.eu.umami.is/script.js'
+        data-website-id='52ffbed5-9bda-487a-9f25-02ab08228eb5'
+      />
       <body className={roboto.className}>
         <ThemeProvider
           attribute='class'
