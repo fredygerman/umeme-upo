@@ -4,11 +4,12 @@ const { publicRuntimeConfig } = getConfig();
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  title: 'Umeme Upo | Get power status of various locations in Dar es salaam',
-  name: 'Umeme Upo',
+  title:
+    'Umeme Upo? | Jipatie hali ya umeme katika maeneo mbalimbali ya Dar es Salaam.',
+  name: 'Umeme Upo?',
   domain: 'https://umeme-upo.vercel.app/',
   githubUrl: 'https://github.com/fredygerman/umeme-upo',
-  image: '', // TODO: add logo image
+  image: '/images/logo/brand/main.svg',
   type: 'website',
   twitterHandle: '@fredygerman_',
   descriptionEn:
@@ -26,7 +27,7 @@ export const siteConfig = {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
-    logo: '/logo.svg',
+    logo: '/images/logo/brand/main.svg',
   },
   socials: [
     {
