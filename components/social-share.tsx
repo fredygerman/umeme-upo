@@ -26,14 +26,16 @@ export default function SocialShare({
   return (
     <div className='flex flex-col items-center justify-center'>
       {status !== 'unknown' && quote && (
-        <h4 className='mb-8 max-w-[70%] break-before-auto break-after-auto text-center   text-2xl  font-bold'>
-          "{quote}"
-        </h4>
+        <>
+          <h4 className='mb-8 max-w-[70%] break-before-auto break-after-auto text-center font-bold sm:text-2xl md:text-xl'>
+            " {quote} "
+          </h4>
+          <div className='flex flex-row items-center justify-center '>
+            <Icons.twitter className='mb-4 mr-4 h-4 w-4 ' />
+            <span className='mb-4 mr-4 h-5 w-4'>Twitter</span>
+          </div>
+        </>
       )}
-      <div className='flex flex-row items-center justify-center '>
-        <Icons.twitter className='mb-4 mr-4 h-4 w-4 ' />
-        <span className='mb-4 mr-4 h-5 w-4'>Twitter</span>
-      </div>
     </div>
   );
 }
