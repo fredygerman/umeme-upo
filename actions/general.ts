@@ -14,7 +14,7 @@ const fetchStatus = async (location: string): Promise<fetchStatusResponse> => {
 
     switch (location) {
       case 'makumbusho':
-        url = env.MAKUMBUSHO_STATUS_URL || '';
+        url = `${env.MAKUMBUSHO_STATUS_URL}` || '';
         break;
       default:
         throw new Error('Invalid location');
