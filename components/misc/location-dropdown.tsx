@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Icons } from '../icons';
+import { Icons } from '@/components/icons';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -31,6 +31,11 @@ export function LocationDropDown() {
   };
 
   useEffect(() => {
+    router.push(pathname + '?' + createQueryString('location', location));
+  }, []);
+
+  useEffect(() => {
+    router.refresh();
     router.push(pathname + '?' + createQueryString('location', location));
   }, [location]);
 

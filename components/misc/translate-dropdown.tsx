@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Icons } from '../icons';
+import { Icons } from '@/components/icons';
 import { useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Language } from '@/types/general';
@@ -41,6 +41,7 @@ export function TranslateToggle() {
   useEffect(() => {
     // when language changes, refresh the page
     router.refresh();
+    router.push(pathname + '?' + createQueryString('language', language));
   }, [language]);
 
   return (
