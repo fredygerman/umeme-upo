@@ -10,7 +10,17 @@ const fetchStatus = async (location: string): Promise<fetchStatusResponse> => {
   };
 
   try {
-    const res = await fetch(`${env.MAKUMBUSHO_STATUS_URL}`, {
+    let url = '';
+
+    switch (location) {
+      case 'makumbusho':
+        url = env.MAKUMBUSHO_STATUS_URL || '';
+        break;
+      default:
+        throw new Error('Invalid location');
+    }
+
+    const res = await fetch(url, {
       method: 'GET',
       headers: headers,
       cache: 'no-store',

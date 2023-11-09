@@ -41,6 +41,7 @@ export function TranslateToggle() {
   useEffect(() => {
     // when language changes, refresh the page
     router.refresh();
+    router.push(pathname + '?' + createQueryString('language', language));
   }, [language]);
 
   return (
