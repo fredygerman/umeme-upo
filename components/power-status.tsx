@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils';
 import { Language, Location, fetchStatusResponse } from '@/types/general';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
-import LastTimeOnline from './last-time-online';
-import SocialShare from './social-share';
+import LastTimeOnline from '@/components/last-time-online';
+import SocialShare from '@/components/social-share';
 
 export default function PowerStatus({
   location,
@@ -66,9 +66,11 @@ export default function PowerStatus({
               ? 'Power is Off'
               : 'Umeme haupo'}
           </h3>
-          <Button onClick={() => refetch()}> // !TODO: fix this, it's not working
+          {/*
+           // !TODO: fix this, it's not working
+           <Button onClick={() => refetch()}>
             {language === 'en' ? 'Refresh' : 'Angalia tena'}
-          </Button>
+          </Button> */}
         </>
       )}
 

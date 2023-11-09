@@ -11,7 +11,7 @@ export type fetchStatusResponse = {
 
 export type LastTimeOnline = string | 'unknown';
 
-export type Status = 'on' | 'off' | 'maybe off' | 'unknown';
+export type Status = 'on' | 'off' | 'unknown';
 
 export type Language = 'en' | 'sw';
 
