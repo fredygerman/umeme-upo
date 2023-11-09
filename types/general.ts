@@ -4,6 +4,13 @@ export type BoltProps = LucideProps & {
   status: Status;
 };
 
+export type fetchStatusResponse = {
+  lastTimeOnline: LastTimeOnline;
+  status: Status;
+};
+
+export type LastTimeOnline = string | 'unknown';
+
 export type Status = 'on' | 'off' | 'maybe off' | 'unknown';
 
 export type Language = 'en' | 'sw';
