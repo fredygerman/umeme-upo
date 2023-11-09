@@ -32,6 +32,11 @@ export function LocationDropDown() {
 
   useEffect(() => {
     router.push(pathname + '?' + createQueryString('location', location));
+  }, []);
+
+  useEffect(() => {
+    router.refresh();
+    router.push(pathname + '?' + createQueryString('location', location));
   }, [location]);
 
   return (
