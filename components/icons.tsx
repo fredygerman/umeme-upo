@@ -1,5 +1,5 @@
+import { BoltProps } from '@/types/general';
 import { LucideProps, Moon, SunMedium, Twitter } from 'lucide-react';
-import { BoltProps } from '../types/general';
 
 export const Icons = {
   sun: SunMedium,
