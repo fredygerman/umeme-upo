@@ -32,3 +32,25 @@ export function timeSince(date: Date) {
   }
   return Math.floor(seconds) + ' seconds';
 }
+
+export function getQuotes(
+  location: string,
+  status: string
+): { en: string; sw: string } | null {
+  const filteredQuotes = quotes.filter(
+    (quote: { location: string; status: string }) =>
+      quote.location === location && quote.status === status
+  );
+
+  if (filteredQuotes.length === 0) {
+    return null; // No matching quotes found
+  }
+
+  const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+  const selectedQuote = filteredQuotes[randomIndex].message;
+
+  return {
+    en: selectedQuote.en,
+    sw: selectedQuote.sw,
+  };
+}

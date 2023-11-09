@@ -5,48 +5,48 @@ export const quotes: Quotes = [
     location: 'makumbusho',
     status: 'on',
     message: {
-      en: 'Power is on at Makumbusho',
-      sw: 'Kuna umeme Makumbusho',
+      en: 'Lights are throwing a disco party at Makumbusho! 💡🎉 Power is on, and the dance floor is lit!',
+      sw: 'Mwanga unang`ara kama disko Makumbusho! 💡🎉 Kuna umeme, na uwanja wa kucheza umewashwa!',
     },
   },
   {
     location: 'makumbusho',
     status: 'off',
     message: {
-      en: 'Power is off at Makumbusho',
-      sw: 'Hakuna umeme Makumbusho',
+      en: 'Oops! The power took a nap at Makumbusho. 😴 Power is off, but we`re on a dreaming spree!',
+      sw: 'Aiyayai! Inaonekana umeme amechukua mapumziko Makumbusho. 😴 Hakuna umeme, lakini tuko kwenye mfululizo wa ndoto!',
     },
   },
   {
     location: 'makumbusho',
     status: 'unknown',
     message: {
-      en: 'Power status is unknown at Makumbusho',
-      sw: 'Hali ya umeme haifahamiki Makumbusho',
+      en: 'Is the power playing hide and seek at Makumbusho? 🤷‍♂️ Power status is unknown, but the search is on!',
+      sw: 'Je, umeme unacheza kujificha kwa Makumbusho? 🤷‍♂️ Hali ya umeme haifahamiki, lakini tuko kwenye msako!',
     },
   },
   {
     location: 'others',
     status: 'on',
     message: {
-      en: 'Power is on at Others',
-      sw: 'Kuna umeme Others',
+      en: 'Others is throwing an electrifying party! ⚡🎉 Power is on, and the energy is contagious!',
+      sw: 'Others inachomeka na umeme! ⚡🎉 Kuna umeme, na nishati ni ya kuambukiza!',
     },
   },
   {
     location: 'others',
     status: 'off',
     message: {
-      en: 'Power is off at Others',
-      sw: 'Hakuna umeme Others',
+      en: 'Power outage at Others! 🕯️ Darkness, but fear not, candles to the rescue!',
+      sw: 'Hakuna umeme Others! 🕯️ Giza, lakini usiogope, mishumaa kuokoa!',
     },
   },
   {
     location: 'others',
     status: 'unknown',
     message: {
-      en: 'Power status is unknown at Others',
-      sw: 'Hali ya umeme haifahamiki Others',
+      en: 'Others is keeping us in suspense. 🕵️‍♀️ Power status is unknown, but the thrill is real!',
+      sw: 'Others inatushikilia kwa wasiwasi. 🕵️‍♀️ Hali ya umeme haifahamiki, lakini msisimko ni wa kweli!',
     },
   },
 ];
