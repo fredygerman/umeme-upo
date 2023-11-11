@@ -1,6 +1,11 @@
 # Umeme Upo
 
-A Next Js app that shows you the current power status of your area.
+A Next Js app that shows you the current power status of various areas in Dar es Salaam, Tanzania.
+
+There are 2 main repositories for this project:
+
+- [Umeme Upo](https://github.com/fredygerman/umeme-upo) - The Next Js App
+- [Umeme Upo Esp32-ping](https://github.com/fredygerman/umeme-upo-esp32-ping) - The ESP32 code that pings my server to notify that the power is on at the location it is.
 
 ## Features
 
@@ -65,6 +70,12 @@ IF you need help setting up everything with your own instance of Directus, Home 
 If you want to contribute to this project, please open an issue.
 Areas that need help:
 
-- [ ] Design (UI/UX improvements)
-- [ ] Suggestions (new features)
-- [ ] Support for more areas (currently only supports Makumbusho, i need ip addresses to ping for other areas)
+Visit the [Contributing Guidelines](https://github.com/fredygerman/umeme-upo/blob/main/CONTRIBUTING.md) for more information.
+
+## Code of Conduct
+
+Visit the [Code of Conduct](https://github.com/fredygerman/umeme-upo/blob/main/CODE_OF_CONDUCT.md) for more information.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/fredygerman/umeme-upo/blob/main/LICENSE) file for details.
