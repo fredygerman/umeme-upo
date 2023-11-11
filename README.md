@@ -4,16 +4,14 @@ A Next Js app that shows you the current power status of your area.
 
 ## Features
 
-- [🚧] Theme Switcher
-- [🚧] Shows you the current power status of your area.
-- [🚧] Change Area to view power status.
-- [ 🔜] Shows the next power status update time.
-- [ 🔜] Shows the last power status update time.
-- [ 🔜] Funny / Not so Funny Quotes
+- [✅] Theme Switcher
+- [✅] Shows you the current power status of your area.
+- [✅] Change Area to view power status.
+- [✅] Shows the last time the power check was done
+- [✅] Funny / Not so Funny Quotes
 - [ 🔜] Share power status on social media
 - [ 🔜] Share Quotes on social media.
-- [ 🔜] Shows the current time.
-- [ 🔜] Check Status Button
+- [ 🔜] On Demand Power Check Status Button
 - [ 🔜] Realtime Power Status Update
 
 Later On:
@@ -57,7 +55,7 @@ The Directus Flow pings my Home Assistant instance Ip address to check if it is 
 - Typescript
 - Tailwind CSS
 - Directus (my headless CMS)
-- Home Assistant (my Smart Home server)
+- ESP32 device to ping my Directus Server
 - Vercel (Hosting)
 
 IF you need help setting up everything with your own instance of Directus, Home Assistant or Vercel, please open an issue or contact me on [@fredygerman\_](https://twitter.com/fredygerman_)
