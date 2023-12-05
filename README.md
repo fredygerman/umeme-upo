@@ -1,19 +1,22 @@
 # Umeme Upo
 
-A Next Js app that shows you the current power status of your area.
+A Next Js app that shows you the current power status of various areas in Dar es Salaam, Tanzania.
+
+There are 2 main repositories for this project:
+
+- [Umeme Upo](https://github.com/fredygerman/umeme-upo) - The Next Js App
+- [Umeme Upo Esp32-ping](https://github.com/fredygerman/umeme-upo-esp32-ping) - The ESP32 code that pings my server to notify that the power is on at the location it is.
 
 ## Features
 
-- [🚧] Theme Switcher
-- [🚧] Shows you the current power status of your area.
-- [🚧] Change Area to view power status.
-- [ 🔜] Shows the next power status update time.
-- [ 🔜] Shows the last power status update time.
-- [ 🔜] Funny / Not so Funny Quotes
+- [✅] Theme Switcher
+- [✅] Shows you the current power status of your area.
+- [✅] Change Area to view power status.
+- [✅] Shows the last time the power check was done
+- [✅] Funny / Not so Funny Quotes
 - [ 🔜] Share power status on social media
 - [ 🔜] Share Quotes on social media.
-- [ 🔜] Shows the current time.
-- [ 🔜] Check Status Button
+- [ 🔜] On Demand Power Check Status Button
 - [ 🔜] Realtime Power Status Update
 
 Later On:
@@ -57,7 +60,7 @@ The Directus Flow pings my Home Assistant instance Ip address to check if it is 
 - Typescript
 - Tailwind CSS
 - Directus (my headless CMS)
-- Home Assistant (my Smart Home server)
+- ESP32 device to ping my Directus Server
 - Vercel (Hosting)
 
 IF you need help setting up everything with your own instance of Directus, Home Assistant or Vercel, please open an issue or contact me on [@fredygerman\_](https://twitter.com/fredygerman_)
@@ -67,6 +70,12 @@ IF you need help setting up everything with your own instance of Directus, Home 
 If you want to contribute to this project, please open an issue.
 Areas that need help:
 
-- [ ] Design (UI/UX improvements)
-- [ ] Suggestions (new features)
-- [ ] Support for more areas (currently only supports Makumbusho, i need ip addresses to ping for other areas)
+Visit the [Contributing Guidelines](https://github.com/fredygerman/umeme-upo/blob/main/CONTRIBUTING.md) for more information.
+
+## Code of Conduct
+
+Visit the [Code of Conduct](https://github.com/fredygerman/umeme-upo/blob/main/CODE_OF_CONDUCT.md) for more information.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/fredygerman/umeme-upo/blob/main/LICENSE) file for details.
