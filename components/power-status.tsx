@@ -1,6 +1,6 @@
 'use client';
 
-import { fetchStatus } from '@/actions/general';
+import { fetchStatus } from '@/actions/supabase';
 import { Icons } from '@/components/icons';
 import { cn } from '@/lib/utils';
 import { Language, Location, fetchStatusResponse } from '@/types/general';
@@ -16,13 +16,13 @@ export default function PowerStatus({
 }: {
   location: Location;
   language: Language;
-  initialData: fetchStatusResponse;
+  initialData?: fetchStatusResponse | Error;
 }) {
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
       queryKey: ['get-status'],
       queryFn: () => fetchStatus(location) as any,
-      initialData: initialData,
+      initialData: initialData as any,
       refetchInterval: 30 * 1000,
     });
 
@@ -90,17 +90,21 @@ export default function PowerStatus({
           </h3>
         </>
       )}
-
-      <LastTimeOnline
-        lastTimeOnline={data?.lastTimeOnline}
-        status={data?.status}
-        language={language}
-      />
-      <SocialShare
-        paramLocation={location}
-        language={language}
-        status={data?.status}
-      />
+      {data && data.lastTimeOnline && data.status && (
+        <>
+          {' '}
+          <LastTimeOnline
+            lastTimeOnline={data?.lastTimeOnline}
+            status={data?.status}
+            language={language}
+          />
+          <SocialShare
+            paramLocation={location}
+            language={language}
+            status={data?.status}
+          />
+        </>
+      )}
     </div>
   );
 }
