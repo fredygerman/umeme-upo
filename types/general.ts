@@ -9,6 +9,10 @@ export type fetchStatusResponse = {
   status: Status;
 };
 
+export type fetchStatusResponseError = {
+  error: string;
+};
+
 export type LastTimeOnline = string | 'unknown';
 
 export type Status = 'on' | 'off' | 'unknown';

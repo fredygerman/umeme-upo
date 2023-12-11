@@ -1,4 +1,4 @@
-import { fetchStatus } from '@/actions/general';
+import { fetchStatus } from '@/actions/supabase';
 import PowerStatus from '@/components/power-status';
 
 export default async function Home(searchParams: {
@@ -13,11 +13,13 @@ export default async function Home(searchParams: {
   console.log('initialData fetched on server', initialData);
   return (
     <main className='flex  flex-col items-center justify-between pb-9 pt-8  md:pb-20 md:pt-16'>
-      <PowerStatus
-        location={location}
-        language={language}
-        initialData={initialData}
-      />
+      {initialData && (
+        <PowerStatus
+          location={location}
+          language={language}
+          initialData={initialData}
+        />
+      )}
     </main>
   );
 }
