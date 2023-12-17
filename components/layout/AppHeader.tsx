@@ -9,10 +9,10 @@ export function AppHeader() {
     <div className='flex w-full flex-row items-center justify-between px-8 py-2 md:px-16'>
       <div className='flex flex-col items-center justify-between pr-16'>
         <Image
-          src='/images/logo-light.png'
+          src='/images/logo/brand/main.svg'
           alt='Umeme Upo? Logo'
-          width={50}
-          height={20}
+          width={100}
+          height={100}
         />
       </div>
       <div className='flex flex-col items-center justify-between '>
