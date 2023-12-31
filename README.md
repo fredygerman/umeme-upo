@@ -11,7 +11,7 @@ There are 2 main repositories for this project:
 
 1. The ESP32 device pings makes a request to the API every 5 minutes. This is like a heartbeat.
 2. The API then adds a new record to the database recording the time and location of the ping.
-3. When a user visits the website, the website checks the database for the last ping if it was within the last 5 minutes, it shows the power status as ON, otherwise it shows the power status as OFF.
+3. When a user visits the website, the website checks the database for the last ping if it was within the last 5 minutes, it shows the power status as ON, otherwise it shows the power status as OFF. The website refreshes every 30 seconds to check for new values in the database.
 
 ## Features
 
