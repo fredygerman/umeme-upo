@@ -9,6 +9,9 @@ Thank you for considering contributing to Umeme Upo! We appreciate your time and
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Supabase & Database & API](#supabase--database--api)
+  - [Environment Variables](#environment-variables)
+  - [Running the Project](#running-the-project)
 - [Contributing](#contributing)
   - [Creating an Issue](#creating-an-issue)
   - [Working on an Issue](#working-on-an-issue)
@@ -24,6 +27,7 @@ Thank you for considering contributing to Umeme Upo! We appreciate your time and
 Before you start contributing, make sure you have the following installed:
 
 - Node version 18.0.0 or higher
+- Supabase account
 
 ### Installation
 
@@ -51,6 +55,55 @@ cp .env.example .env
 ```bash
 pnpm dev
 ```
+
+### Supabase & Database & API
+
+1. Create a [Supabase](https://supabase.io/) account.
+
+2. Create a new project.
+
+3. Create the following tables in your Supabase project:
+
+The example schema for the database per area is as follows:
+
+```sql
+-- Create makumbusho_logs table
+CREATE TABLE makumbusho_logs (
+    id serial PRIMARY KEY,
+    created_at timestamptz DEFAULT now(),
+    errors jsonb DEFAULT '{}',
+    source text
+);
+```
+
+```sql
+-- Create makumbusho_errors table
+CREATE TABLE makumbusho_errors (
+    id serial PRIMARY KEY,
+    created_at timestamptz DEFAULT now(),
+    errors jsonb DEFAULT '{}',
+    source text
+);
+```
+
+### Environment Variables
+
+The `.env` file contains the following environment variables:
+
+- `NEXT_PUBLIC_SUPABASE_URL` - The URL of your Supabase project.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` - The public API key of your Supabase project.
+- `NEXT_PUBLIC_APP_URL` - The URL of your frontend application.
+- `NEXT_PUBLIC_ENV` - The environment of your application. This can be `development` or `production`.
+
+### Running the Project
+
+1. Start the development server:
+
+```bash
+pnpm dev
+```
+
+2. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Contributing
 
@@ -90,8 +143,8 @@ Before you start working on a feature or a bug fix, you should create an issue. 
 
 2.  Create a new branch:
     `bash
-    git checkout -b <username>/feature/<feature-name>
-    `
+git checkout -b <username>/feature/<feature-name>
+`
 
 3.  Push the branch to GitHub:
 
