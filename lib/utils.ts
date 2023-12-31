@@ -1,4 +1,4 @@
-import { quotes } from '@/data/messages';
+import { quotes } from '@/data/quotes';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
