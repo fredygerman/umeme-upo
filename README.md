@@ -60,8 +60,9 @@ You can help improve it by visiting the [Figma File](https://www.figma.com/file/
 - Chadcn UI (Components Library) - [Chadcn](https://github.com/shadcn-ui/ui)
 - Tailwind CSS (Styling)
 - Supabase (Database and API)
-- ESP32 device to ping the API
+- @tanstack/react-query (Data Fetching) - [React Query](https://react-query.tanstack.com/)
 - Vercel (Frontend Hosting)
+- ESP32 device to ping the API
 
 ## Database Schema
 
