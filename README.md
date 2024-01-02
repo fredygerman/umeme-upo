@@ -13,6 +13,15 @@ There are 2 main repositories for this project:
 2. The API then adds a new record to the database recording the time and location of the ping.
 3. When a user visits the website, the website checks the database for the last ping if it was within the last 5 minutes, it shows the power status as ON, otherwise it shows the power status as OFF. The website refreshes every 30 seconds to check for new values in the database.
 
+You can also check on the flow charts below.
+
+Flow Chart 1 (Website):
+
+![Flow Chart 1](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/flow-1.png?raw=true)
+
+Flow Chart 2 (ESP32 Device):
+![Flow Chart 2](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/flow-2.png?raw=true)
+
 ## Features
 
 - [✅] Shows you the current power status of your area.
