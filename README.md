@@ -17,10 +17,10 @@ You can also check on the flow charts below.
 
 Flow Chart 1 (Website):
 
-![Flow Chart 1](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/flow-1.png?raw=true)
+![Flow Chart 1](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/how-1.png?raw=true)
 
 Flow Chart 2 (ESP32 Device):
-![Flow Chart 2](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/flow-2.png?raw=true)
+![Flow Chart 2](https://github.com/fredygerman/umeme-upo/blob/main/screenshots/how-2.png?raw=true)
 
 ## Features
 
