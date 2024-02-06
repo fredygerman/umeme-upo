@@ -24,8 +24,8 @@ dependencies:
     specifier: ^5.8.1
     version: 5.8.1(@tanstack/react-query@5.4.3)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query-next-experimental':
-    specifier: ^5.8.1
-    version: 5.8.1(@tanstack/react-query@5.4.3)(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^5.18.0
+    version: 5.18.0(@tanstack/react-query@5.4.3)(next@14.0.1)(react@18.2.0)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -926,18 +926,16 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.8.1(@tanstack/react-query@5.4.3)(next@14.0.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-qk1VnkGl17Ypmj1ydyWSVDipoQV4UK+8HXsllIVLus+eLEmg0kzpV4xNzuzKKIAtto5V+0S6BjFy1o+q0BWe4w==}
+  /@tanstack/react-query-next-experimental@5.18.0(@tanstack/react-query@5.4.3)(next@14.0.1)(react@18.2.0):
+    resolution: {integrity: sha512-8xrk+UjXE38MC5pOG3ztdoobXXzFaIXnQ6a1UfLdZCVkXDzt3RbHchpf/ESTjYmKYL5ohJNVO2by19ZMlzjPSQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.8.1
+      '@tanstack/react-query': ^5.18.0
       next: ^13 || ^14
       react: ^18.0.0
-      react-dom: ^18.0.0
     dependencies:
       '@tanstack/react-query': 5.4.3(react-dom@18.2.0)(react@18.2.0)
       next: 14.0.1(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@5.4.3(react-dom@18.2.0)(react@18.2.0):
