@@ -9,9 +9,16 @@ export type fetchStatusResponse = {
   status: Status;
 };
 
+export type fetchLocationsResponse = {
+  id: string;
+  location: string;
+};
+
 export type fetchStatusResponseError = {
   error: string;
 };
+
+export type fetchLocationsResponseError = fetchStatusResponseError;
 
 export type LastTimeOnline = string | 'unknown';
 

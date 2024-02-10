@@ -1,12 +1,16 @@
 import Image from 'next/image';
+
+// Local imports
+import { fetchLocations } from '@/actions/supabase';
 import { ModeToggle } from '@/components/misc/theme-toggle';
 import { LocationDropDown } from '@/components/misc/location-dropdown';
-import { Icons } from '@/components/icons';
 import { TranslateToggle } from '@/components/misc/translate-dropdown';
 
-export function AppHeader() {
+export async function AppHeader() {
+  const locations = await fetchLocations();
+
   return (
-    <div className='flex w-full flex-row items-center justify-between px-8 py-2 md:px-16'>
+    <div className='flex flex-row items-center justify-between w-full px-8 py-2 md:px-16'>
       <div className='flex flex-col items-center justify-between pr-16'>
         <Image
           src='/images/logo/brand/main.svg'
@@ -16,7 +20,7 @@ export function AppHeader() {
         />
       </div>
       <div className='flex flex-col items-center justify-between '>
-        <LocationDropDown />
+        <LocationDropDown locations={locations} />
       </div>
 
       <div className='flex flex-row items-center justify-between'>

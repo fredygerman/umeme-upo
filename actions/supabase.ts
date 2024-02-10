@@ -1,28 +1,28 @@
 'use server';
 
 import { timeSince } from '@/lib/utils';
-import { fetchStatusResponse, fetchStatusResponseError } from '@/types/general';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
+import supabase from '@/config/supabaseInstance';
+import {
+  fetchLocationsResponse,
+  fetchStatusResponse,
+  fetchStatusResponseError,
+} from '@/types/general';
+
+const hardCodedLocations = [
+  {
+    id: '1',
+    location: 'makumbusho',
+  },
+  {
+    id: '2',
+    location: 'tabata',
+  },
+];
 
 const fetchStatus = async (
   location: string
 ): Promise<fetchStatusResponse | Error> => {
   try {
-    const cookieStore = cookies();
-
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      } as CookieOptions
-    );
-
     const table = `${location}_logs`;
 
     const { data, error } = await supabase
@@ -70,4 +70,14 @@ const fetchStatus = async (
   }
 };
 
-export { fetchStatus };
+async function fetchLocations(): Promise<fetchLocationsResponse[]> {
+  const { data, error } = await supabase.from('locations').select('*');
+  // console.log(error);
+  if (error) {
+    // throw error
+    return hardCodedLocations;
+  }
+  return data;
+}
+
+export { fetchStatus, fetchLocations };

@@ -1,6 +1,13 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
+// Local imports
+import { cn } from '@/lib/utils';
+import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
+import { Location, fetchLocationsResponse } from '@/types/general';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,13 +17,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Icons } from '@/components/icons';
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Location } from '@/types/general';
 
-export function LocationDropDown() {
+export function LocationDropDown({
+  locations,
+}: {
+  locations: fetchLocationsResponse[];
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -49,7 +55,7 @@ export function LocationDropDown() {
                 'mr-2 h-[1.4rem] w-[1.2rem] rotate-0 scale-100 uppercase transition-all '
               )}
             />
-            {location === 'makumbusho' ? 'Makumbusho' : 'Others'}
+            {location === 'makumbusho' ? 'Makumbusho' : location || 'Others'}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56'>
@@ -62,12 +68,11 @@ export function LocationDropDown() {
               router.push(`?${createQueryString('location', value)}`);
             }}
           >
-            <DropdownMenuRadioItem value='makumbusho'>
-              Makumbusho
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value='others' disabled>
-              Others coming soon..
-            </DropdownMenuRadioItem>
+            {locations.map(({ id, location }) => (
+              <DropdownMenuRadioItem key={id} value={location}>
+                {location}
+              </DropdownMenuRadioItem>
+            ))}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

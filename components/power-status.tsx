@@ -35,7 +35,7 @@ export default function PowerStatus({
       </h2>
       {(isLoading || isFetching) && !isError && (
         <>
-          <Icons.bolt className='h-24 w-24 animate-spin' status='off' />
+          <Icons.bolt className='w-24 h-24 animate-spin' status='off' />
           <h3
             className={cn(
               'mb-8 pt-4 text-center text-2xl font-bold uppercase',
@@ -51,7 +51,7 @@ export default function PowerStatus({
 
       {!isFetching && isSuccess && (
         <>
-          <Icons.bolt className='h-24 w-24' status={data?.status} />
+          <Icons.bolt className='w-24 h-24' status={data?.status} />
           <h3
             className={cn(
               'mb-8 pt-4 text-center text-2xl font-bold  uppercase',
@@ -63,8 +63,8 @@ export default function PowerStatus({
                 ? 'Power is On'
                 : 'Umeme upo'
               : language === 'en'
-              ? 'Power is Off'
-              : 'Umeme haupo'}
+                ? 'Power is Off'
+                : 'Umeme haupo'}
           </h3>
           {/*
            // !TODO: fix this, it's not working
@@ -77,7 +77,7 @@ export default function PowerStatus({
       {!isFetching && isError && (
         <>
           {' '}
-          <Icons.bolt className='h-24 w-24' status='off' />
+          <Icons.bolt className='w-24 h-24' status='off' />
           <h3
             className={cn(
               'mb-8 pt-4 text-center text-2xl font-bold  uppercase',
@@ -99,7 +99,7 @@ export default function PowerStatus({
             language={language}
           />
           <SocialShare
-            paramLocation={location}
+            paramLocation={location !== 'makumbusho' ? 'others' : 'makumbusho'}
             language={language}
             status={data?.status}
           />
