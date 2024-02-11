@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Language, Location, Quotes, Status } from '@/types/general';
+
+// Local imports
+import { Language, Status } from '@/types/general';
 import { Icons } from '@/components/icons';
 import { getQuotes } from '@/lib/utils';
 
@@ -19,7 +21,7 @@ export default function SocialShare({
     if (updatedQuote) {
       setQuote(language === 'en' ? updatedQuote.en : updatedQuote.sw);
     }
-  }, [status, language]);
+  }, [status, language, paramLocation]);
 
   const [quote, setQuote] = useState<string | null>(null);
 

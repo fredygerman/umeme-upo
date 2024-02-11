@@ -1,4 +1,4 @@
-import { quotes } from '@/data/quotes';
+import { quote } from '@/data/quotes';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -37,19 +37,20 @@ export function getQuotes(
   location: string,
   status: string
 ): { en: string; sw: string } | null {
-  const filteredQuotes = quotes.filter(
-    (quote: any) => quote.location === location && quote.status === status
-  );
+  const selectedQuote = quote[status];
 
-  if (filteredQuotes.length === 0) {
+  if (!selectedQuote) {
     return null; // No matching quotes found
   }
 
-  const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
-  const selectedQuote = filteredQuotes[randomIndex].message;
-
   return {
-    en: selectedQuote.en,
-    sw: selectedQuote.sw,
+    en: selectedQuote.en.replace(
+      'Location',
+      location.charAt(0).toUpperCase() + location.slice(1)
+    ),
+    sw: selectedQuote.sw.replace(
+      'Location',
+      location.charAt(0).toUpperCase() + location.slice(1)
+    ),
   };
 }

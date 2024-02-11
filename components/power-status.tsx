@@ -1,13 +1,14 @@
 'use client';
 
-import { fetchStatus } from '@/actions/supabase';
-import { Icons } from '@/components/icons';
-import { cn } from '@/lib/utils';
-import { Language, Location, fetchStatusResponse } from '@/types/general';
 import { useQuery } from '@tanstack/react-query';
-import { Button } from '@/components/ui/button';
-import LastTimeOnline from '@/components/last-time-online';
+
+// Local imports
+import { cn } from '@/lib/utils';
+import { Icons } from '@/components/icons';
+import { fetchStatus } from '@/actions/supabase';
 import SocialShare from '@/components/social-share';
+import LastTimeOnline from '@/components/last-time-online';
+import { Language, Location, fetchStatusResponse } from '@/types/general';
 
 export default function PowerStatus({
   location,
@@ -25,8 +26,6 @@ export default function PowerStatus({
       initialData: initialData as any,
       refetchInterval: 30 * 1000,
     });
-
-  // console.log({ data });
 
   return (
     <div className='flex flex-col items-center justify-center '>
@@ -63,8 +62,8 @@ export default function PowerStatus({
                 ? 'Power is On'
                 : 'Umeme upo'
               : language === 'en'
-              ? 'Power is Off'
-              : 'Umeme haupo'}
+                ? 'Power is Off'
+                : 'Umeme haupo'}
           </h3>
           {/*
            // !TODO: fix this, it's not working
