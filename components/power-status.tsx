@@ -14,7 +14,7 @@ export default function PowerStatus({
   language,
   initialData,
 }: {
-  location: Location;
+  location: string;
   language: Language;
   initialData?: fetchStatusResponse | Error;
 }) {
@@ -99,7 +99,7 @@ export default function PowerStatus({
             language={language}
           />
           <SocialShare
-            paramLocation={location !== 'makumbusho' ? 'others' : 'makumbusho'}
+            paramLocation={location}
             language={language}
             status={data?.status}
           />

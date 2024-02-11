@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
-import { Location, fetchLocationsResponse } from '@/types/general';
+import { Location } from '@/types/general';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,13 +21,13 @@ import {
 export function LocationDropDown({
   locations,
 }: {
-  locations: fetchLocationsResponse[];
+  locations: Location[] | Error;
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [location, setLocation] = useState<Location>(
-    (searchParams.get('location') as Location) || 'makumbusho'
+  const [location, setLocation] = useState<string>(
+    (searchParams.get('location') as string) || 'makumbusho'
   );
 
   const createQueryString = (name: string, value: string) => {
@@ -38,12 +38,19 @@ export function LocationDropDown({
 
   useEffect(() => {
     router.push(pathname + '?' + createQueryString('location', location));
-  }, []);
+  }, [location, pathname]);
 
-  useEffect(() => {
-    router.refresh();
-    router.push(pathname + '?' + createQueryString('location', location));
-  }, [location]);
+  const isError = locations instanceof Error;
+  const dropdownItems = isError ? (
+    <DropdownMenuRadioItem value='makumbusho'>Makumbusho</DropdownMenuRadioItem>
+  ) : (
+    Array.isArray(locations) &&
+    locations.map((location) => (
+      <DropdownMenuRadioItem key={location.id} value={location.name}>
+        {location.name}
+      </DropdownMenuRadioItem>
+    ))
+  );
 
   return (
     <div className='pl-1'>
@@ -55,7 +62,7 @@ export function LocationDropDown({
                 'mr-2 h-[1.4rem] w-[1.2rem] rotate-0 scale-100 uppercase transition-all '
               )}
             />
-            {location === 'makumbusho' ? 'Makumbusho' : location || 'Others'}
+            {location}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56'>
@@ -63,16 +70,12 @@ export function LocationDropDown({
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             value={location}
-            onValueChange={(value: Location | string) => {
-              setLocation(value as Location);
+            onValueChange={(value) => {
+              setLocation(value as string);
               router.push(`?${createQueryString('location', value)}`);
             }}
           >
-            {locations.map(({ id, location }) => (
-              <DropdownMenuRadioItem key={id} value={location}>
-                {location}
-              </DropdownMenuRadioItem>
-            ))}
+            {dropdownItems}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

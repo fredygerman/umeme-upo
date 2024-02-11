@@ -10,7 +10,7 @@ export default function SocialShare({
   language,
   status,
 }: {
-  paramLocation: Location;
+  paramLocation: string;
   language: Language;
   status: Status;
 }) {

@@ -9,24 +9,23 @@ export type fetchStatusResponse = {
   status: Status;
 };
 
-export type fetchLocationsResponse = {
+export type Location = {
   id: string;
-  location: string;
+  name: string;
+  is_available: boolean;
 };
 
 export type fetchStatusResponseError = {
   error: string;
 };
 
-export type fetchLocationsResponseError = fetchStatusResponseError;
+export type locationError = fetchStatusResponseError;
 
 export type LastTimeOnline = string | 'unknown';
 
 export type Status = 'on' | 'off' | 'unknown';
 
 export type Language = 'en' | 'sw';
-
-export type Location = 'makumbusho' | 'others';
 
 export type Quote = {
   location: Location;

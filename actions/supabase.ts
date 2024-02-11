@@ -3,10 +3,11 @@
 import { createSupabaseServerClient } from '@/lib/supabase/server-client';
 import { timeSince } from '@/lib/utils';
 import {
-  fetchLocationsResponse,
+  Location,
   fetchStatusResponse,
   fetchStatusResponseError,
 } from '@/types/general';
+import { PostgrestError } from '@supabase/supabase-js';
 
 const hardCodedLocations = [
   {
@@ -71,16 +72,22 @@ const fetchStatus = async (
   }
 };
 
-async function fetchLocations(): Promise<fetchLocationsResponse[]> {
-  const supabase = createSupabaseServerClient();
+async function fetchLocations(): Promise<Location[] | Error> {
+  try {
+    const supabase = createSupabaseServerClient();
 
-  const { data, error } = await supabase.from('locations').select('*');
-  // console.log(error);
-  if (error) {
-    // throw error
-    return hardCodedLocations;
+    const { data, error } = await supabase.from('locations').select('*');
+    console.log('the data is ', data);
+
+    if (error) {
+      return new Error('Error fetching locations' + error);
+    }
+
+    return JSON.parse(JSON.stringify(data));
+  } catch (error) {
+    console.log('the error is ', error);
+    return new Error('Error fetching locations' + error);
   }
-  return data;
 }
 
 export { fetchStatus, fetchLocations };

@@ -38,8 +38,7 @@ export function getQuotes(
   status: string
 ): { en: string; sw: string } | null {
   const filteredQuotes = quotes.filter(
-    (quote: { location: string; status: string }) =>
-      quote.location === location && quote.status === status
+    (quote: any) => quote.location === location && quote.status === status
   );
 
   if (filteredQuotes.length === 0) {
