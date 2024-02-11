@@ -45,9 +45,9 @@ export function LocationDropDown({
     <DropdownMenuRadioItem value='makumbusho'>Makumbusho</DropdownMenuRadioItem>
   ) : (
     Array.isArray(locations) &&
-    locations.map((location) => (
-      <DropdownMenuRadioItem key={location.id} value={location.name}>
-        {location.name}
+    locations.map(({ id, name, is_available }) => (
+      <DropdownMenuRadioItem key={id} value={name} disabled={!is_available}>
+        {name} {!is_available && ' (Unavailable)'}
       </DropdownMenuRadioItem>
     ))
   );

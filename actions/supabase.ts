@@ -1,24 +1,8 @@
 'use server';
 
-import { createSupabaseServerClient } from '@/lib/supabase/server-client';
 import { timeSince } from '@/lib/utils';
-import {
-  Location,
-  fetchStatusResponse,
-  fetchStatusResponseError,
-} from '@/types/general';
-import { PostgrestError } from '@supabase/supabase-js';
-
-const hardCodedLocations = [
-  {
-    id: '1',
-    location: 'makumbusho',
-  },
-  {
-    id: '2',
-    location: 'tabata',
-  },
-];
+import { createSupabaseServerClient } from '@/lib/supabase/server-client';
+import { Location, fetchStatusResponse } from '@/types/general';
 
 const fetchStatus = async (
   location: string
@@ -77,7 +61,7 @@ async function fetchLocations(): Promise<Location[] | Error> {
     const supabase = createSupabaseServerClient();
 
     const { data, error } = await supabase.from('locations').select('*');
-    console.log('the data is ', data);
+    console.log('Locations data is ', data);
 
     if (error) {
       return new Error('Error fetching locations' + error);
