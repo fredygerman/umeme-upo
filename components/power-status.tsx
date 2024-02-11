@@ -20,6 +20,7 @@ export default function PowerStatus({
 }) {
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
+      queryKey: ['status', location],
       queryFn: () => fetchStatus(location) as any,
       initialData: initialData as any,
       refetchInterval: 30 * 1000,
