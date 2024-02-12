@@ -28,11 +28,14 @@ export type Status = 'on' | 'off' | 'unknown';
 export type Language = 'en' | 'sw';
 
 export type Quote = {
-  location: Location;
-  status: Status;
-  message: {
-    [key in Language]: string;
-  };
+  en: string;
+  sw: string;
+};
+
+export type QuoteStatus = {
+  on: Quote;
+  off: Quote;
+  unknown: Quote;
 };
 
 export type Quotes = Quote[];

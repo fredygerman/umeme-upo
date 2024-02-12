@@ -1,4 +1,5 @@
 import { quote } from '@/data/quotes';
+import { Quote, QuoteStatus } from '@/types/general';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -33,11 +34,8 @@ export function timeSince(date: Date) {
   return Math.floor(seconds) + ' seconds';
 }
 
-export function getQuotes(
-  location: string,
-  status: string
-): { en: string; sw: string } | null {
-  const selectedQuote = quote[status];
+export function getQuotes(location: string, status: string): Quote | null {
+  const selectedQuote: Quote = quote[status as keyof QuoteStatus];
 
   if (!selectedQuote) {
     return null; // No matching quotes found
