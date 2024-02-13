@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 // Local imports
-import { cn } from '@/lib/utils';
+import { cn, nameFromValue } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Location } from '@/types/general';
@@ -47,7 +47,7 @@ export function LocationDropDown({
     Array.isArray(locations) &&
     locations.map(({ id, name, is_available }) => (
       <DropdownMenuRadioItem key={id} value={name} disabled={!is_available}>
-        {name} {!is_available && ' (Unavailable)'}
+        {nameFromValue(name)} {!is_available && ' (Unavailable)'}
       </DropdownMenuRadioItem>
     ))
   );

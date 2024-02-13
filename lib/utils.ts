@@ -52,3 +52,10 @@ export function getQuotes(location: string, status: string): Quote | null {
     ),
   };
 }
+
+export function nameFromValue(value: string) {
+  return value
+    .replace(/_/g, '-')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
+}
