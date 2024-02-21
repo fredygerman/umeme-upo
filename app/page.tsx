@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import PowerStatus from '@/components/power-status';
 
 export default async function Home(searchParams: { searchParams: any }) {

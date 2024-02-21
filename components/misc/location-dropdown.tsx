@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn, nameFromValue } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
-import { Location } from '@/types/general';
+import { Locations } from '@/types/general';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,21 +17,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { fetchLocations } from '@/actions/supabase';
-import { useQuery } from '@tanstack/react-query';
 
-export function LocationDropDown() {
-  const { data, isError, isLoading, isSuccess, isFetching, refetch } = useQuery<
-    Location | Error
-  >({
-    queryKey: ['locations'],
-    queryFn: () => fetchLocations() as any,
-    // 2000000 is 33 minutes !TODO: might need to keep this configurable in the future
-    refetchInterval: 2000000,
-  });
-
-  const locations = data as Location[] | Error;
-
+export function LocationDropDown({
+  locations,
+  isError,
+}: {
+  locations: Locations | null;
+  isError: boolean;
+}) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -54,8 +47,12 @@ export function LocationDropDown() {
   ) : (
     Array.isArray(locations) &&
     locations.map(({ id, name, is_available, is_coming_soon }) => (
-      <DropdownMenuRadioItem key={id} value={name} disabled={!is_available}>
-        {nameFromValue(name)}
+      <DropdownMenuRadioItem
+        key={id}
+        value={name as string}
+        disabled={!is_available}
+      >
+        {nameFromValue(name as string)}
         {!is_available && !is_coming_soon && ' (Unavailable)'}
         {is_coming_soon && ' (Coming Soon)'}
       </DropdownMenuRadioItem>
@@ -66,7 +63,7 @@ export function LocationDropDown() {
     <div className='pl-1'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' onClick={() => refetch()}>
+          <Button variant='ghost'>
             <Icons.arrowDown
               className={cn(
                 'mr-2 h-[1.4rem] w-[1.2rem] rotate-0 scale-100 uppercase transition-all '
