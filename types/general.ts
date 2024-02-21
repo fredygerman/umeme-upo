@@ -13,6 +13,7 @@ export type Location = {
   id: string;
   name: string;
   is_available: boolean;
+  is_coming_soon: boolean;
 };
 
 export type fetchStatusResponseError = {

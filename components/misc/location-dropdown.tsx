@@ -17,12 +17,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { fetchLocations } from '@/actions/supabase';
+import { useQuery } from '@tanstack/react-query';
 
-export function LocationDropDown({
-  locations,
-}: {
-  locations: Location[] | Error;
-}) {
+export function LocationDropDown() {
+  const { data, isError, isLoading, isSuccess, isFetching, refetch } = useQuery<
+    Location | Error
+  >({
+    queryKey: ['locations'],
+    queryFn: () => fetchLocations() as any,
+    // 2000000 is 33 minutes !TODO: might need to keep this configurable in the future
+    refetchInterval: 2000000,
+  });
+
+  const locations = data as Location[] | Error;
+
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -40,14 +49,15 @@ export function LocationDropDown({
     router.push(pathname + '?' + createQueryString('location', location));
   }, [location, pathname]);
 
-  const isError = locations instanceof Error;
   const dropdownItems = isError ? (
     <DropdownMenuRadioItem value='makumbusho'>Makumbusho</DropdownMenuRadioItem>
   ) : (
     Array.isArray(locations) &&
-    locations.map(({ id, name, is_available }) => (
+    locations.map(({ id, name, is_available, is_coming_soon }) => (
       <DropdownMenuRadioItem key={id} value={name} disabled={!is_available}>
-        {nameFromValue(name)} {!is_available && ' (Unavailable)'}
+        {nameFromValue(name)}
+        {!is_available && !is_coming_soon && ' (Unavailable)'}
+        {is_coming_soon && ' (Coming Soon)'}
       </DropdownMenuRadioItem>
     ))
   );
@@ -56,13 +66,13 @@ export function LocationDropDown({
     <div className='pl-1'>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost'>
+          <Button variant='ghost' onClick={() => refetch()}>
             <Icons.arrowDown
               className={cn(
                 'mr-2 h-[1.4rem] w-[1.2rem] rotate-0 scale-100 uppercase transition-all '
               )}
             />
-            {location}
+            {nameFromValue(location)}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className='w-56'>

@@ -81,8 +81,8 @@ export default function PowerStatus({
             )}
           >
             {language === 'en'
-              ? 'Error fetching power status'
-              : 'Kuna tatizo katika kuangalia hali ya umeme'}
+              ? `Error fetching power status for ${location}.`
+              : `Kuna tatizo katika kuangalia hali ya umeme kwa ${location}. `}
           </h3>
         </>
       )}

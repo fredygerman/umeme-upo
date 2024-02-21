@@ -20,7 +20,7 @@ export async function AppHeader() {
         />
       </div>
       <div className='flex flex-col items-center justify-between '>
-        <LocationDropDown locations={locations} />
+        <LocationDropDown />
       </div>
 
       <div className='flex flex-row items-center justify-between'>
