@@ -1,4 +1,5 @@
 import { LucideProps } from 'lucide-react';
+import { Tables } from './supabase';
 
 export type BoltProps = LucideProps & {
   status: Status;
@@ -9,11 +10,14 @@ export type fetchStatusResponse = {
   status: Status;
 };
 
-export type Location = {
-  id: string;
-  name: string;
-  is_available: boolean;
-  is_coming_soon: boolean;
+export type Location = Tables<'locations'>;
+
+export type Locations = Location[];
+
+export type FetchLocationsResponse = {
+  locations: Locations;
+  success: boolean;
+  error?: string;
 };
 
 export type fetchStatusResponseError = {
