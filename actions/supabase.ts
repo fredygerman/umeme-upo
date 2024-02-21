@@ -1,15 +1,28 @@
 'use server';
 
-import { createSupabaseBrowserClient } from '@/lib/supabase/browser-client';
 import { timeSince } from '@/lib/utils';
-import { Location, fetchStatusResponse } from '@/types/general';
+import { fetchStatusResponse, fetchStatusResponseError } from '@/types/general';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 const fetchStatus = async (
   location: string
 ): Promise<fetchStatusResponse | Error> => {
   try {
     const table = `${location}_logs`;
-    const supabase = createSupabaseBrowserClient();
+    const cookieStore = cookies();
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      } as any
+    );
 
     const { data, error } = await supabase
       .from(table)
@@ -58,8 +71,19 @@ const fetchStatus = async (
 
 async function fetchLocations(): Promise<Location[] | Error> {
   try {
-    const supabase = createSupabaseBrowserClient();
+    const cookieStore = cookies();
 
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      } as any
+    );
     const { data, error } = await supabase.from('locations').select('*');
     console.log('Locations data is ', data);
 
