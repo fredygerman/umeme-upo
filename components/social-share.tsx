@@ -30,7 +30,7 @@ export default function SocialShare({
       {status !== 'unknown' && quote && (
         <>
           <h4 className='mb-8 max-w-[70%] break-before-auto break-after-auto text-center font-bold sm:text-2xl md:text-xl'>
-            " {quote} "
+          &quot; {quote} &quot;
           </h4>
           <div className='flex flex-row items-center justify-center '>
             <Icons.twitter className='mb-4 mr-4 h-4 w-4 ' />

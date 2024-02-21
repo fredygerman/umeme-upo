@@ -36,13 +36,14 @@ export function TranslateToggle() {
 
   useEffect(() => {
     router.push(pathname + '?' + createQueryString('language', language));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     // when language changes, refresh the page
     router.refresh();
     router.push(pathname + '?' + createQueryString('language', language));
-  }, [language]);
+  }, [language , pathname,createQueryString, router]);
 
   return (
     <div className='pr-4'>

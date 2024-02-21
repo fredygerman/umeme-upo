@@ -40,7 +40,8 @@ export function LocationDropDown({
 
   useEffect(() => {
     router.push(pathname + '?' + createQueryString('location', location));
-  }, [location, pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const dropdownItems = isError ? (
     <DropdownMenuRadioItem value='makumbusho'>Makumbusho</DropdownMenuRadioItem>

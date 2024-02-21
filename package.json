@@ -35,14 +35,15 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.52.0",
     "eslint-config-next": "14.0.1",
     "eslint-config-prettier": "^9.0.0",
-    "postcss": "^8.4.31",
+    "eslint-plugin-tailwindcss": "^3.14.3",
+    "postcss": "^8.4.35",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }
