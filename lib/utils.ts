@@ -1,4 +1,5 @@
-import { quotes } from '@/data/quotes';
+import { quote } from '@/data/quotes';
+import { Quote, QuoteStatus } from '@/types/general';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -33,24 +34,28 @@ export function timeSince(date: Date) {
   return Math.floor(seconds) + ' seconds';
 }
 
-export function getQuotes(
-  location: string,
-  status: string
-): { en: string; sw: string } | null {
-  const filteredQuotes = quotes.filter(
-    (quote: { location: string; status: string }) =>
-      quote.location === location && quote.status === status
-  );
+export function getQuotes(location: string, status: string): Quote | null {
+  const selectedQuote: Quote = quote[status as keyof QuoteStatus];
 
-  if (filteredQuotes.length === 0) {
+  if (!selectedQuote) {
     return null; // No matching quotes found
   }
 
-  const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
-  const selectedQuote = filteredQuotes[randomIndex].message;
-
   return {
-    en: selectedQuote.en,
-    sw: selectedQuote.sw,
+    en: selectedQuote.en.replace(
+      'Location',
+      location.charAt(0).toUpperCase() + location.slice(1)
+    ),
+    sw: selectedQuote.sw.replace(
+      'Location',
+      location.charAt(0).toUpperCase() + location.slice(1)
+    ),
   };
+}
+
+export function nameFromValue(value: string) {
+  return value
+    .replace(/_/g, '-')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (l) => l.toUpperCase());
 }

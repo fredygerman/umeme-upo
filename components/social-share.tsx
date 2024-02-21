@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Language, Location, Quotes, Status } from '@/types/general';
+
+// Local imports
+import { Language, Status } from '@/types/general';
 import { Icons } from '@/components/icons';
 import { getQuotes } from '@/lib/utils';
 
@@ -10,7 +12,7 @@ export default function SocialShare({
   language,
   status,
 }: {
-  paramLocation: Location;
+  paramLocation: string;
   language: Language;
   status: Status;
 }) {
@@ -19,7 +21,7 @@ export default function SocialShare({
     if (updatedQuote) {
       setQuote(language === 'en' ? updatedQuote.en : updatedQuote.sw);
     }
-  }, [status, language]);
+  }, [status, language, paramLocation]);
 
   const [quote, setQuote] = useState<string | null>(null);
 
@@ -28,7 +30,7 @@ export default function SocialShare({
       {status !== 'unknown' && quote && (
         <>
           <h4 className='mb-8 max-w-[70%] break-before-auto break-after-auto text-center font-bold sm:text-2xl md:text-xl'>
-            " {quote} "
+          &quot; {quote} &quot;
           </h4>
           <div className='flex flex-row items-center justify-center '>
             <Icons.twitter className='mb-4 mr-4 h-4 w-4 ' />

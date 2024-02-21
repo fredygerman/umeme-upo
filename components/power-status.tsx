@@ -1,32 +1,28 @@
 'use client';
 
-import { fetchStatus } from '@/actions/supabase';
-import { Icons } from '@/components/icons';
-import { cn } from '@/lib/utils';
-import { Language, Location, fetchStatusResponse } from '@/types/general';
 import { useQuery } from '@tanstack/react-query';
-import { Button } from '@/components/ui/button';
-import LastTimeOnline from '@/components/last-time-online';
+
+// Local imports
+import { cn } from '@/lib/utils';
+import { Icons } from '@/components/icons';
+import { fetchStatus } from '@/actions/supabase';
 import SocialShare from '@/components/social-share';
+import LastTimeOnline from '@/components/last-time-online';
+import { Language, Location, fetchStatusResponse } from '@/types/general';
 
 export default function PowerStatus({
   location,
   language,
-  initialData,
 }: {
-  location: Location;
+  location: string;
   language: Language;
-  initialData?: fetchStatusResponse | Error;
 }) {
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
-      queryKey: ['get-status'],
+      queryKey: ['status', location],
       queryFn: () => fetchStatus(location) as any,
-      initialData: initialData as any,
       refetchInterval: 30 * 1000,
     });
-
-  // console.log({ data });
 
   return (
     <div className='flex flex-col items-center justify-center '>
@@ -85,8 +81,8 @@ export default function PowerStatus({
             )}
           >
             {language === 'en'
-              ? 'Error fetching power status'
-              : 'Kuna tatizo katika kuangalia hali ya umeme'}
+              ? `Error fetching power status for ${location}.`
+              : `Kuna tatizo katika kuangalia hali ya umeme kwa ${location}. `}
           </h3>
         </>
       )}
