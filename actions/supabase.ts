@@ -1,28 +1,24 @@
 'use server';
 
+import {
+  createSupabaseServerClient,
+  createSupabaseServerComponentClient,
+} from '@/lib/supabase/server-client';
 import { timeSince } from '@/lib/utils';
-import { fetchStatusResponse, fetchStatusResponseError } from '@/types/general';
+import {
+  Locations,
+  FetchLocationsResponse,
+  fetchStatusResponse,
+} from '@/types/general';
+import { Database } from '@/types/supabase';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
 
 const fetchStatus = async (
   location: string
 ): Promise<fetchStatusResponse | Error> => {
   try {
     const table = `${location}_logs`;
-    const cookieStore = cookies();
-
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      } as any
-    );
+    const supabase = createSupabaseServerClient();
 
     const { data, error } = await supabase
       .from(table)
@@ -69,32 +65,31 @@ const fetchStatus = async (
   }
 };
 
-async function fetchLocations(): Promise<Location[] | Error> {
+async function fetchLocations(): Promise<FetchLocationsResponse> {
   try {
-    const cookieStore = cookies();
-
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-        },
-      } as any
-    );
+    const supabase = createSupabaseServerClient();
     const { data, error } = await supabase.from('locations').select('*');
     console.log('Locations data is ', data);
 
     if (error) {
-      return new Error('Error fetching locations' + error);
+      return {
+        locations: [],
+        success: false,
+        error: error.message,
+      };
     }
 
-    return JSON.parse(JSON.stringify(data));
+    return {
+      locations: data as Locations,
+      success: true,
+    };
   } catch (error) {
     console.log('the error is ', error);
-    return new Error('Error fetching locations' + error);
+    return {
+      locations: [],
+      success: false,
+      error: 'Unknown error',
+    };
   }
 }
 
