@@ -13,17 +13,14 @@ import { Language, Location, fetchStatusResponse } from '@/types/general';
 export default function PowerStatus({
   location,
   language,
-  initialData,
 }: {
   location: string;
   language: Language;
-  initialData?: fetchStatusResponse | Error;
 }) {
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
       queryKey: ['status', location],
       queryFn: () => fetchStatus(location) as any,
-      initialData: initialData as any,
       refetchInterval: 30 * 1000,
     });
 
@@ -62,8 +59,8 @@ export default function PowerStatus({
                 ? 'Power is On'
                 : 'Umeme upo'
               : language === 'en'
-                ? 'Power is Off'
-                : 'Umeme haupo'}
+              ? 'Power is Off'
+              : 'Umeme haupo'}
           </h3>
           {/*
            // !TODO: fix this, it's not working

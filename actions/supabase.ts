@@ -1,7 +1,7 @@
 'use server';
 
+import { createSupabaseBrowserClient } from '@/lib/supabase/browser-client';
 import { timeSince } from '@/lib/utils';
-import { createSupabaseServerClient } from '@/lib/supabase/server-client';
 import { Location, fetchStatusResponse } from '@/types/general';
 
 const fetchStatus = async (
@@ -9,7 +9,7 @@ const fetchStatus = async (
 ): Promise<fetchStatusResponse | Error> => {
   try {
     const table = `${location}_logs`;
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseBrowserClient();
 
     const { data, error } = await supabase
       .from(table)
@@ -58,7 +58,7 @@ const fetchStatus = async (
 
 async function fetchLocations(): Promise<Location[] | Error> {
   try {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseBrowserClient();
 
     const { data, error } = await supabase.from('locations').select('*');
     console.log('Locations data is ', data);
