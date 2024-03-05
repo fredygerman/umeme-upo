@@ -9,6 +9,8 @@ import { fetchStatus } from '@/actions/supabase';
 import SocialShare from '@/components/social-share';
 import LastTimeOnline from '@/components/last-time-online';
 import { Language, Location, fetchStatusResponse } from '@/types/general';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function PowerStatus({
   location,
@@ -17,12 +19,24 @@ export default function PowerStatus({
   location: string;
   language: Language;
 }) {
+  const pathname = usePathname();
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
       queryKey: ['status', location],
       queryFn: () => fetchStatus(location) as any,
       refetchInterval: 30 * 1000,
     });
+
+  // ! I don't know if these use effect will be of any help,
+  // ! but i am trying to fix a bug where fetch status takes forever until but works well
+  // ! after refresh or location change
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  useEffect(() => {
+    refetch();
+  }, [pathname]);
 
   return (
     <div className='flex flex-col items-center justify-center '>
