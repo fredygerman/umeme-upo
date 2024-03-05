@@ -11,6 +11,7 @@ import LastTimeOnline from '@/components/last-time-online';
 import { Language, Location, fetchStatusResponse } from '@/types/general';
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 export default function PowerStatus({
   location,
@@ -20,6 +21,7 @@ export default function PowerStatus({
   language: Language;
 }) {
   const pathname = usePathname();
+  const router = useRouter()
   const { data, isError, isLoading, isSuccess, isFetching, refetch } =
     useQuery<fetchStatusResponse>({
       queryKey: ['status', location],
@@ -31,12 +33,12 @@ export default function PowerStatus({
   // ! but i am trying to fix a bug where fetch status takes forever until but works well
   // ! after refresh or location change
   useEffect(() => {
-    refetch();
+    router.reload()
   }, []);
 
-  useEffect(() => {
-    refetch();
-  }, [pathname]);
+  // useEffect(() => {
+  //   refetch();
+  // }, [pathname]);
 
   return (
     <div className='flex flex-col items-center justify-center '>
