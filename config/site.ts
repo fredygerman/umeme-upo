@@ -23,12 +23,18 @@ export const siteConfig = {
     },
     //    use the above as a template for adding more nav items
   ],
+
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
-    logo: '/images/logo/brand/main.svg',
+    apple: '/favicon/apple-touch-icon.png',
+    shortcut: '/favicon/favicon-16x16.png',
+    icon: '/favicon/favicon.ico',
+    logo: '/favicon/images/logo/brand/main.svg',
+    manifest: '/favicon/site.webmanifest',
+    maskIcon: '/favicon/safari-pinned-tab.svg',
+    msTileColor: '#000000',
+    themeColor: '#ffffff',
   },
+
   socials: [
     {
       name: 'Twitter',
