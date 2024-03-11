@@ -4,15 +4,49 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AppHeader } from '@/components/layout/AppHeader';
 import QueryProvider from '@/components/query-provider';
+import { siteConfig } from '@/config/site';
+import { useRouter } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
+// ! TODO : get the language from the user's browser and use it to choose what title and description to to use on metadata
+const language = 'swahili';
+
 export const metadata: Metadata = {
-  title:
-    'Umeme upo? | Jipatie hali ya umeme katika maeneo mbalimbali ya Dar es Salaam.',
+  title: language === 'swahili' ? siteConfig.title : siteConfig.titleEn,
   description:
-    'A web application to show power status of various locations in Dar es salaam',
+    language === 'swahili'
+      ? siteConfig.descriptionSw
+      : siteConfig.descriptionEn,
+  twitter: {
+    card: 'summary_large_image',
+    site: siteConfig.twitterHandle,
+    creator: siteConfig.twitterHandle,
+    images: siteConfig.icons.logo,
+  },
+  metadataBase: new URL(siteConfig.domain),
+  applicationName: siteConfig.name,
+  authors: siteConfig.authors,
+  icons: siteConfig.icons,
+  keywords: siteConfig.tags,
+  creator: 'Fredy German Mgimba',
+  assets: `${siteConfig.domain}/public`,
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    url: siteConfig.domain,
+    title: siteConfig.title,
+    description: siteConfig.descriptionEn,
+    images: [
+      {
+        url: siteConfig.icons.logo,
+        width: 800,
+        height: 600,
+        alt: 'Umeme Upo? Logo',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
